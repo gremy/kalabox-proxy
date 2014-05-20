@@ -1,5 +1,5 @@
 FROM ubuntu:12.04
-MAINTAINER Jason Wilder jwilder@litl.com
+MAINTAINER Mike Pirog <mike@kalamuna.com>
 
 # Install Nginx.
 RUN apt-get update

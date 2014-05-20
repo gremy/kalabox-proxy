@@ -4,7 +4,7 @@ See [Automated Nginx Reverse Proxy for Docker][2] for why you might want to use 
 
 To run it:
 
-    $ docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock -t jwilder/nginx-proxy
+    $ docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock -t pirog/kalabox-proxy
 
 Then start any containers you want proxied with an env var VIRTUAL_HOST=subdomain.youdomain.com
 
@@ -13,7 +13,7 @@ Then start any containers you want proxied with an env var VIRTUAL_HOST=subdomai
 Provided your DNS is setup to forward foo.bar.com to the a host running nginx-proxy, the request will be routed to a container with the VIRTUAL_HOST env var set.
 
     FROM ubuntu:12.04
-    MAINTAINER Jason Wilder jwilder@litl.com
+    MAINTAINER Mike Pirog <mike@kalamuna.com>
 
     # Install Nginx.
     RUN apt-get update
@@ -21,7 +21,7 @@ Provided your DNS is setup to forward foo.bar.com to the a host running nginx-pr
     RUN add-apt-repository -y ppa:nginx/stable
 
     RUN apt-get update
-    RUN apt-get install -y nginx 
+    RUN apt-get install -y nginx
     RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
     RUN mkdir /app
